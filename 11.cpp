@@ -1,4 +1,4 @@
-﻿#include "framework.h"
+#include "framework.h"
 #include "11.h"
 #include <windows.h>
 #include <CommCtrl.h>
@@ -8,8 +8,8 @@
 #define IDC_IPADDRESS 11
 #define IDC_SLIDER 113
 #define IDC_LISTBOX 114
-#define IDM_SAVEAS 115
-#define IDM_FIND 116
+#define IDC_SAVEAS 115
+#define IDC_FIND 116
 #define ON_EVENTS 117
 #define MAX_FIND_TEXT 100
 
@@ -127,12 +127,12 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
     // Кнопка "Сохранить как"
     CreateWindowEx(0, L"BUTTON", L"Сохранить как",
         WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
-        220, 10, 200, 30, hWnd, (HMENU)IDM_SAVEAS, hInstance, NULL);
+        220, 10, 200, 30, hWnd, (HMENU)IDC_SAVEAS, hInstance, NULL);
 
     // Кнопка "Найти"
     CreateWindowEx(0, L"BUTTON", L"Найти",
         WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON,
-        220, 50, 200, 30, hWnd, (HMENU)IDM_FIND, hInstance, NULL);
+        220, 50, 200, 30, hWnd, (HMENU)IDC_FIND, hInstance, NULL);
 
     // Кнопка "Включить MouseMove"
     CreateWindowEx(0, L"BUTTON", L"Включить MouseMove",
@@ -158,7 +158,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         case IDM_ABOUT:
             DialogBox(hInst, MAKEINTRESOURCE(IDD_ABOUTBOX), hWnd, About);
             break;
-        case IDM_SAVEAS:
+        case IDC_SAVEAS:
         {
             OPENFILENAME ofn;
             TCHAR szFile[MAX_PATH] = L"";
@@ -176,7 +176,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             }
         }
         break;
-        case IDM_FIND:
+        case IDC_FIND:
         {
             if (hFindDialog == NULL) {
                 findDlg.hwndOwner = hWnd;
